@@ -1,9 +1,15 @@
 
-
+@font-face {
+  font-family: "iconfont"; /* Project id 2137349 */
+  src: url("../assets/fonts/figure-light.woff2")
+      format("woff2"),
+    url("../assets//fonts/figure.woff")
+      format("woff"),
+}
 .hello {
   color: red;
-  width: 60px;
-  height: 200px;
+  width: 100vh;
+  height: 100vh;
   font-family: 'iconfont';
   background-image: url('../assets/images/SSL.png');
 }

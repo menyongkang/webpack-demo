@@ -1,5 +1,6 @@
 import _ from "lodash";
 import "./styles/index.css";
+import "../src/assets/iconfont/iconfont.css";
 import WebpackImages from "./assets/images/webpack.png";
 
 function component() {
