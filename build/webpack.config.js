@@ -5,10 +5,15 @@
  */
 
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 //导入自定义 JSON 模块 parser
-const toml = require("../src/data/data.toml");
-const yaml = require("../src/data/data.yaml");
-const json5 = require("../src/data/data.json5");
+// const toml = require("../src/data/data5.toml");
+// console.log("toml: ", toml);
+// const yaml = require("../src/data/data3.yaml");
+// console.log("yaml: ", yaml);
+// const json5 = require("../src/data/data2.json5");
+// console.log("json5: ", json5);
 module.exports = {
 	// 入口
 	entry: "./src/index.js",
@@ -64,29 +69,29 @@ module.exports = {
 				test: /\.xml$/i,
 				use: ["xml-loader"],
 			},
-			{
-				test: /\.toml$/i,
-				type: "json",
-				// 解析器, 解析选项对象。
-				parser: {
-					//它可能在没有特定加载器的时候,自定义的逻辑，以解析模块的源和并将它转换成 JavaScript 对象
-					parse: toml.parse,
-				},
-			},
-			{
-				test: /\.yaml$/i,
-				type: "json",
-				parser: {
-					parse: yaml.parse,
-				},
-			},
-			{
-				test: /\.json5$/i,
-				type: "json",
-				parser: {
-					parse: json5.parse,
-				},
-			},
+			// {
+			// 	test: /\.toml$/i,
+			// 	type: "json",
+			// 	// 解析器, 解析选项对象。
+			// 	parser: {
+			// 		//它可能在没有特定加载器的时候,自定义的逻辑，以解析模块的源和并将它转换成 JavaScript 对象
+			// 		parse: toml.parse,
+			// 	},
+			// },
+			// {
+			// 	test: /\.yaml$/i,
+			// 	type: "json",
+			// 	parser: {
+			// 		parse: yaml.parse,
+			// 	},
+			// },
+			// {
+			// 	test: /\.json5$/i,
+			// 	type: "json",
+			// 	parser: {
+			// 		parse: json5.parse,
+			// 	},
+			// },
 		],
 	},
 };
