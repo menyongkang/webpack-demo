@@ -5,6 +5,7 @@
  */
 
 const path = require("path");
+// 生成index.html 文件，并根据入口文件建立新的引用关系
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 //导入自定义 JSON 模块 parser
@@ -15,14 +16,19 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const json5 = require("../src/data/data2.json5");
 // console.log("json5: ", json5);
 module.exports = {
+	mode: "development",
 	// 入口
-	entry: "./src/index.js",
+	entry: {
+		index: "./src/index.js",
+		print: "./src/print.js",
+	},
 	// 出口
 	output: {
-		filename: "main.js", //出口文件名称
+		filename: "[name].bundle.js", //出口文件名称
 		path: path.resolve(__dirname, "../dist"), // 出口文件地址
+		clean: true, //每次构建前清理 /dist 文件夹
 	},
-	// mode："development",
+	// 如何以其他方式来控制 webpack 输出，manifest,通过 WebpackManifestPlugin 插件，可以将 manifest 数据提取为一个 json 文件以供使用。
 	//Loader
 	module: {
 		// 创建模块时，匹配请求的规则数组
@@ -94,4 +100,14 @@ module.exports = {
 			// },
 		],
 	},
+	plugins: [
+		// 重新根据入口生成引入文件
+		new HtmlWebpackPlugin({
+			title: "webpackDemo",
+		}),
+	],
+	// 如何设置一个开发环境
+	// 使用 source map 将编译后的代码映射回原始源代码。
+	// https://webpack.docschina.org/configuration/devtool
+	devtool: "inline-source-map",
 };

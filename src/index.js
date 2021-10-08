@@ -17,14 +17,22 @@ import Notes from "../src/data/data1.csv";
 // console.log("json: ", json.title);
 // console.log("json: ", json.owner.name);
 
+import printMe from "./print.js";
+
 function component() {
 	const element = document.createElement("div");
+	const btn = document.createElement("button");
 	element.innerHTML = _.join(["Hello", "webpack"], "");
+
 	element.classList.add("hello");
+
+	btn.innerHTML = "Click me and check the console!";
+	btn.onclick = printMe;
 
 	const images = new Image();
 	images.src = WebpackImages;
-	element.appendChild(images);
+
+	element.appendChild(btn);
 
 	console.log(DataXml);
 	console.log(Notes);
